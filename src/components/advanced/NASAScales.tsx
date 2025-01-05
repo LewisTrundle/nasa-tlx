@@ -1,5 +1,5 @@
-import { CustomSlider } from './CustomSlider';
-import { TLXScalesTypes } from '../data/types';
+import { CustomSlider } from '../basic/CustomSlider';
+import { TLXScalesTypes } from '../../data';
 
 interface NASARatingScaleProps {
   item: TLXScalesTypes;

@@ -1,25 +1,11 @@
 import { useState } from 'react';
-//import reactLogo from './assets/react.svg';
-//import viteLogo from '/vite.svg';
-import NasaTLXForm from './components/NasaTLXForm';
+import { BackButton, NasaTLXForm } from './components';
+import { Surveys, surveyList } from './data'
 import './styles/index.css';
-import './data';
-import { Surveys } from './data';
-import { BackButton } from './components/BackButton';
+
 
 function App() {
   const [surveyType, setSurveyType] = useState<Surveys>(Surveys.NONE);
-
-  const surveyList: {
-    name: string;
-    description: string;
-    value: Surveys;
-  }[] = [
-    { name: "NASA-TLX", description: "Task Load Index Survey", value: Surveys.NASA },
-    { name: "SUS", description: "System Usability Scale Survey", value: Surveys.SUS },
-    { name: "Custom", description: "Embed your own survey", value: Surveys.CUSTOM },
-  ];
-
 
   return (
     <>

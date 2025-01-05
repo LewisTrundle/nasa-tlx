@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import { CustomSwitch } from './CustomSwitch';
-import { NASARatingScale, NASAComparison } from './NASAScales';
-import { TLXScales, TLXScalesState, NasaStage } from '../data';
+import { CustomSwitch } from '../basic/CustomSwitch';
+import { NASARatingScale, NASAComparison } from '../advanced/NASAScales';
+import { TLXScales, TLXScalesState, NasaStage } from '../../data';
 
 
 const NasaTLXForm = () => {

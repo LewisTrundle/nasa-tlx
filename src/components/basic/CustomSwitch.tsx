@@ -42,7 +42,7 @@ const CustomSwitch = ({
 
   return (
     <div className="custom-switch-container">
-      <p>{renderValue ? renderValue(value) : value.toString()}</p>
+      <p className="switch-label">{renderValue ? renderValue(value) : value.toString()}</p>
       <Switch
         onChange={(v: boolean) => onChange(v)}
         checked={checked}
@@ -51,6 +51,13 @@ const CustomSwitch = ({
         checkedIcon={checkedIcon}
         height={height}
         width={width}
+        offColor="#444"
+        onColor="#646cff"
+        offHandleColor="#242424"
+        onHandleColor="#fff"
+        boxShadow="0px 0px 10px 4px #646cff"
+        activeBoxShadow="0px 0px 10px 4px rgba(255, 255, 255, 0.9)"
+        className={"react-switch"}
       />
     </div>
   )

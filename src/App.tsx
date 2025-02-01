@@ -1,41 +1,47 @@
 import { useState } from 'react';
-import { BackButton, NasaTLXForm } from './components';
-import { Surveys, surveyList } from './data'
+import { BackButton, NasaTLXForm, FormOptions } from './components';
+import { Surveys, surveyList, NasaOptions, nasaOptionsList } from './data'
 import './styles/index.css';
 
 
 function App() {
-  const [surveyType, setSurveyType] = useState<Surveys>(Surveys.NONE);
+  const [surveyType, setSurveyType] = useState<Surveys | null>(null);
+  const [subOption, setSubOption] = useState<NasaOptions | null>(null);
+
 
   return (
     <>
 
       <header className="app-header">
-        <h1>Survey Master</h1>
+        {surveyType === null && <h1>Survey Master</h1>}
+        {surveyType === Surveys.NASA && <h1>Nasa TLX - Task Load Index</h1>}
+        {surveyType === Surveys.SUS && <h1>SUS Survey</h1>}
+        {surveyType === Surveys.CUSTOM && <h1>Custom Survey</h1>}
       </header>
 
       <main className="app-body">
-        {surveyType === Surveys.NONE ? (
-          <div className="survey-grid">
-            {surveyList.map((survey) => (
-              <div
-                key={survey.value}
-                className="survey-card"
-                onClick={() => setSurveyType(survey.value)}
-              >
-                <h2>{survey.name}</h2>
-                <p>{survey.description}</p>
-              </div>
-            ))}
-          </div>
+        { surveyType === null ? (
+          <FormOptions
+            optionsList={surveyList}
+            onClick={setSurveyType}
+          />
+        ) : subOption === null ? (
+          <>
+            {surveyType === Surveys.NASA && (
+              <FormOptions
+                descriptionText="The NASA Task Load Index (NASA-TLX) questionnaire is a subjective workload assessment tool, 
+                which provides respondents with an overall score regarding their mental, physical, and temporal demand, performance, 
+                effort, and frustration, in completing a task."
+                optionsList={nasaOptionsList}
+                onClick={setSubOption}
+              />
+            )}
+            <BackButton onClick={() => setSurveyType(null)} />
+          </>
         ) : (
           <div className="survey-content">
-            {surveyType === Surveys.NASA && <NasaTLXForm />}
-            {surveyType === Surveys.SUS && <div>SUS Survey Coming Soon!</div>}
-            {surveyType === Surveys.CUSTOM && <div>Embed your survey here.</div>}
-            <BackButton
-              onClick={() => setSurveyType(Surveys.NONE)}
-            />
+            {subOption === NasaOptions.COMPLETE && <NasaTLXForm />}
+            <BackButton onClick={() => setSubOption(null)} />
           </div>
         )}
       </main>

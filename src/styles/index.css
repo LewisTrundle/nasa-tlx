@@ -127,6 +127,7 @@ button:focus-visible {
   color: var(--font-white);
   padding: 0.6em 1.0em;
   font-size: 1em;
+  margin: 0 auto;
 }
 .back-button {
   position: absolute;
@@ -166,7 +167,8 @@ button:focus-visible {
   width: 80%;
   flex: 1;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   padding: 2rem;
 }
@@ -198,6 +200,7 @@ button:focus-visible {
   background-color: var(--secondary-background-color);
   border-radius: var(--border-radius1);
   width: 100%;
+  min-height: 65vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -206,6 +209,7 @@ button:focus-visible {
   margin: 0.5rem;
 }
 .survey-body {
+  align-self: center;
   width: 100%;
   max-width: 700px;
   padding: 1rem 1rem 1rem 1rem;
@@ -223,7 +227,9 @@ button:focus-visible {
     animation: logo-spin infinite 20s linear;
   }
 }
-
+.form-description {
+  padding-bottom: 1rem;
+}
 
 
 /* -----  NASA-TLX SURVEY ----- */
@@ -254,4 +260,7 @@ button:focus-visible {
   align-items: center;
   justify-content: center;
   font-size: 13px;
+}
+.custom-switch-container .switch-label {
+  font-size: 1rem;
 }

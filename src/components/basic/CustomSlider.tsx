@@ -3,12 +3,13 @@ import 'rc-slider/assets/index.css';
 import { useState } from 'react';
 
 interface CustomSliderProps {
+  defaultValue: number;
   onChange?: (value: number) => void;
 }
 
 
-export const CustomSlider = ( { onChange }: CustomSliderProps) => {
-  const [value, setValue] = useState<number>(50);
+export const CustomSlider = ( { defaultValue, onChange }: CustomSliderProps) => {
+  const [value, setValue] = useState<number>(defaultValue);
   const sliderHeight: number = 20;
   const handleHeight: number = sliderHeight;
 
